@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CobrePauta · Acompanhe as pautas que você defende</title>
+  <meta name="description" content="Acompanhe as pautas que você defende e cobre quem pode agir por elas. Portal gratuito para o cidadão brasileiro.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236D3FE8'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="#topo" class="logo" aria-label="CobrePauta, início">
+      <span class="logo__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M6 12.5l4 4L18 8"/></svg>
+      </span>
+      <span class="logo__text">Cobre<b>Pauta</b></span>
+    </a>
+    <nav class="nav__links" id="menu" aria-label="Principal">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#pautas">Pautas</a>
+      <a href="#quem-defende">Quem defende</a>
+      <a href="#acao">Cobrar</a>
+      <a href="#dados">Dados</a>
+    </nav>
+    <a href="#login" class="btn btn--primary btn--sm nav__cta">Criar login</a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__title">Cobre<span class="accent">Pauta</span></h1>
+        <p class="hero__lead">Acompanhe as pautas que você defende e cobre quem pode agir por elas.</p>
+        <span class="pill">Portal gratuito para o cidadão brasileiro</span>
+        <div class="hero__actions">
+          <a href="#pautas" class="btn btn--primary">Escolher minhas pautas</a>
+          <a href="#como-funciona" class="btn btn--ghost">Como funciona</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="orb"><div class="orb__ring"></div><div class="orb__dot"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE IMPORTA -->
+  <section class="section" id="por-que">
+    <div class="container narrow">
+      <p class="eyebrow">Por que importa</p>
+      <h2 class="display">O crescimento de um país depende de <span class="accent">investimento</span> e de <span class="accent">liderança forte</span>.</h2>
+      <hr class="rule">
+      <p class="statement">E a liderança forte vem da <span class="accent">cobrança</span> e do <span class="accent">acompanhamento</span> do povo.</p>
+      <p class="muted">O CobrePauta existe para facilitar essa cobrança.</p>
+    </div>
+  </section>
+
+  <!-- NOSSA PROPOSTA -->
+  <section class="section section--tint">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Nossa proposta</p>
+        <h2 class="h2">Votar é o começo. <span class="accent">Acompanhar</span> é o que faz a pauta andar.</h2>
+        <p class="lead">O CobrePauta apoia o cidadão brasileiro a acompanhar as pautas que deseja e as pessoas que defendem essas pautas.</p>
+      </div>
+      <ul class="verbs">
+        <li><strong>Acompanhar</strong><span>as pautas que você deseja</span></li>
+        <li><strong>Conhecer</strong><span>as pessoas que as defendem</span></li>
+        <li><strong>Cobrar</strong><span>iniciativas para resolver ou apoiar cada pauta</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <p class="eyebrow">Como funciona</p>
+      <h2 class="h2">Três passos, direto no site.</h2>
+      <ol class="steps">
+        <li>
+          <span class="steps__n">1</span>
+          <h3>Selecione sua pauta</h3>
+          <p>Escolha, entre os temas do portal, as pautas que você quer acompanhar.</p>
+          <a href="#pautas" class="link">Ver pautas →</a>
+        </li>
+        <li>
+          <span class="steps__n">2</span>
+          <h3>Descubra quem defende</h3>
+          <p>Veja as pessoas eleitas que defendem cada pauta que você selecionou.</p>
+          <a href="#quem-defende" class="link">Ver pessoas →</a>
+        </li>
+        <li>
+          <span class="steps__n">3</span>
+          <h3>Crie seu login</h3>
+          <p>Acompanhe as atualizações no portal e receba e-mail e push a cada novidade.</p>
+          <a href="#login" class="link">Criar login →</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PASSO 1 -->
+  <section class="section section--tint" id="pautas">
+    <div class="container split split--wide">
+      <div>
+        <p class="eyebrow">Passo 1 · Filtro de pautas</p>
+        <h2 class="h2">Comece pelas pautas</h2>
+        <p class="lead">Você marca os temas que importam para você. O portal passa a girar em torno da sua escolha.</p>
+      </div>
+      <div>
+        <div class="panel">
+          <div class="panel__head">
+            <h3>Selecione suas pautas</h3>
+            <span class="panel__count" id="pautaCount">0 selecionadas</span>
+          </div>
+          <div class="chips" id="pautaChips" role="group" aria-label="Pautas"></div>
+        </div>
+        <p class="footnote">Exemplos de pautas em debate em 2026 na Câmara Municipal de SP, na Alesp e no Congresso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSO 2 -->
+  <section class="section" id="quem-defende">
+    <div class="container split split--wide">
+      <div>
+        <p class="eyebrow">Passo 2 · Filtro de pessoas</p>
+        <h2 class="h2">Depois, quem defende</h2>
+        <p class="lead">Para cada pauta selecionada, o portal mostra as pessoas eleitas que a defendem e as iniciativas que já apresentaram.</p>
+        <div class="refine" role="group" aria-label="Refinar por esfera">
+          <span>Refine por</span>
+          <button class="chip chip--sm is-on" data-level="todas">Todas</button>
+          <button class="chip chip--sm" data-level="federal">Federal</button>
+          <button class="chip chip--sm" data-level="estadual">Estadual</button>
+          <button class="chip chip--sm" data-level="municipal">Municipal</button>
+        </div>
+      </div>
+      <div>
+        <div class="panel">
+          <div class="panel__head">
+            <h3>Quem defende as suas pautas</h3>
+            <span class="panel__count" id="peopleCount">0 pessoas</span>
+          </div>
+          <ul class="people" id="peopleList" aria-live="polite"></ul>
+        </div>
+        <p class="footnote">Exemplos ilustrativos, com nomes e partidos fictícios. Não é recomendação de voto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RANKING + TIMELINE -->
+  <section class="section section--tint" id="ranking">
+    <div class="container">
+      <div class="eyebrow-row">
+        <p class="eyebrow">Ranking e linha do tempo</p>
+        <span class="tag tag--dashed">Exemplo fictício</span>
+      </div>
+      <h2 class="h2">Quem mais entrega, e em que pé está cada projeto</h2>
+      <div class="duo">
+        <div class="panel">
+          <div class="panel__head">
+            <h3>Furto e roubo de celulares</h3>
+            <span class="panel__count">Projetos apresentados</span>
+          </div>
+          <ol class="ranking" id="ranking-list"></ol>
+        </div>
+        <div class="panel">
+          <div class="panel__head">
+            <h3>Projeto que você acompanha</h3>
+            <span class="panel__count" id="tlCode">PL fictício 0000/2026</span>
+          </div>
+          <div class="tl-author" id="tlAuthor"></div>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+      </div>
+      <p class="footnote">Simulação ilustrativa, com nomes, partidos, datas e números inventados. A versão real usará dados oficiais, com fonte e data de atualização.</p>
+    </div>
+  </section>
+
+  <!-- PASSO 3 -->
+  <section class="section" id="login">
+    <div class="container split split--wide">
+      <div>
+        <p class="eyebrow">Passo 3 · Seu acompanhamento</p>
+        <h2 class="h2">Crie seu login e acompanhe</h2>
+        <p class="lead">O portal guarda as suas pautas e as pessoas que você acompanha, e avisa você a cada atualização.</p>
+        <ul class="dots">
+          <li>No portal, em um só painel</li>
+          <li>Por e-mail</li>
+          <li>Por push</li>
+        </ul>
+        <form class="signup" id="signup" novalidate>
+          <label for="email" class="sr-only">Seu e-mail</label>
+          <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+          <button class="btn btn--primary" type="submit">Criar login</button>
+        </form>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </div>
+      <div>
+        <div class="notif">
+          <span class="notif__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+          </span>
+          <div>
+            <p class="notif__kind">E-mail</p>
+            <h3>Atualização em Minerais críticos</h3>
+            <p>Uma pessoa que você acompanha apresentou uma nova iniciativa.</p>
+          </div>
+        </div>
+        <div class="notif">
+          <span class="notif__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1112 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/></svg>
+          </span>
+          <div>
+            <p class="notif__kind">Push · agora</p>
+            <h3>Atualização em Publicidade de bets</h3>
+            <p>Um projeto da sua pauta avançou em comissão.</p>
+          </div>
+        </div>
+        <p class="footnote">Exemplos ilustrativos de avisos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AÇÃO -->
+  <section class="section section--tint" id="acao">
+    <div class="container">
+      <p class="eyebrow">Do acompanhamento à ação</p>
+      <h2 class="h2">Exija iniciativas para as suas pautas</h2>
+      <p class="lead lead--wide">Quando uma pauta está parada, você pode pedir que a pessoa eleita levante iniciativas para resolvê-la ou apoiá-la.</p>
+      <ol class="flow">
+        <li class="card">
+          <span class="badge">1</span>
+          <h3>Veja</h3>
+          <p>O que cada pessoa já fez pela pauta que você acompanha.</p>
+        </li>
+        <li class="card">
+          <span class="badge">2</span>
+          <h3>Peça</h3>
+          <p>Uma iniciativa, com mensagem pronta e os canais oficiais de contato.</p>
+          <button class="link link--btn" id="openAsk">Ver mensagem pronta →</button>
+        </li>
+        <li class="card">
+          <span class="badge">3</span>
+          <h3>Acompanhe</h3>
+          <p>A resposta e as novas atualizações, no portal, por e-mail e push.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DADOS -->
+  <section class="section" id="dados">
+    <div class="container">
+      <div class="eyebrow-row">
+        <p class="eyebrow">Fontes de dados</p>
+        <span class="tag tag--dashed">WIP · em construção</span>
+      </div>
+      <h2 class="h2">De onde vêm os dados</h2>
+      <dl class="sources">
+        <div>
+          <dt>Federal</dt>
+          <dd><strong>Câmara dos Deputados · Senado Federal</strong><span>Deputados, senadores, proposições, votações, autoria e relatoria</span></dd>
+          <dd class="sources__fmt">Dados abertos oficiais, com API</dd>
+        </div>
+        <div>
+          <dt>Eleições</dt>
+          <dd><strong>TSE</strong><span>Candidaturas, resultados e prestação de contas</span></dd>
+          <dd class="sources__fmt">Arquivos, atualizados a cada eleição</dd>
+        </div>
+        <div>
+          <dt>Estadual · SP</dt>
+          <dd><strong>Alesp</strong><span>Deputados estaduais, proposituras, comissões e despesas</span></dd>
+          <dd class="sources__fmt">Arquivos XML</dd>
+        </div>
+        <div>
+          <dt>Municipal · SP</dt>
+          <dd><strong>Câmara Municipal de SP · Querido Diário</strong><span>Vereadores, proposições, votações e diários oficiais</span></dd>
+          <dd class="sources__fmt">Web services e API</dd>
+        </div>
+      </dl>
+      <p class="footnote">Em construção: fontes, cobertura e frequência de atualização ainda em validação. Formatos e periodicidade variam por fonte.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="hero hero--end">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <h2 class="hero__title hero__title--stack">Acompanhe.<br><span class="accent">Cobre.</span></h2>
+        <p class="hero__lead">Gratuito, direto no site e feito para todo cidadão brasileiro.</p>
+        <div class="step-pills">
+          <a href="#pautas" class="pill pill--outline"><b>1</b> Selecione sua pauta</a>
+          <a href="#quem-defende" class="pill pill--outline"><b>2</b> Descubra quem a defende</a>
+          <a href="#login" class="pill pill--outline"><b>3</b> Crie seu login</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="orb"><div class="orb__ring"></div><div class="orb__dot"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <a href="#topo" class="logo logo--sm">
+        <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4L18 8"/></svg></span>
+        <span class="logo__text">Cobre<b>Pauta</b></span>
+      </a>
+      <p class="footer__by"><strong>Projeto criado por Giovanni Lucas</strong><br>
+        Mais informações no site <a href="https://giovannilucas.com.br/" target="_blank" rel="noopener">giovannilucas.com.br</a></p>
+    </div>
+    <p class="footer__note">© <span id="year"></span> CobrePauta · Portal apartidário e gratuito.</p>
+  </div>
+</footer>
+
+<!-- Modal: mensagem pronta -->
+<dialog class="modal" id="askModal" aria-labelledby="askTitle">
+  <form method="dialog" class="modal__inner">
+    <div class="modal__head">
+      <h3 id="askTitle">Mensagem pronta</h3>
+      <button class="modal__close" value="close" aria-label="Fechar">×</button>
+    </div>
+    <label class="modal__label" for="askPauta">Pauta</label>
+    <select id="askPauta"></select>
+    <label class="modal__label" for="askText">Mensagem</label>
+    <textarea id="askText" rows="8"></textarea>
+    <p class="footnote">Na versão final, o portal indica os canais oficiais de contato de cada pessoa eleita.</p>
+    <div class="modal__actions">
+      <button type="button" class="btn btn--ghost" id="copyAsk">Copiar mensagem</button>
+      <button class="btn btn--primary" value="close">Fechar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
