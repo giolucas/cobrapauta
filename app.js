@@ -208,8 +208,6 @@ menu.addEventListener('click', (e) => {
 const nav = $('.nav');
 window.addEventListener('scroll', () => nav.classList.toggle('is-scrolled', window.scrollY > 8), { passive: true });
 
-$('#year').textContent = new Date().getFullYear();
-
 /* ---------- Init ---------- */
 renderPautas();
 renderPessoas();
