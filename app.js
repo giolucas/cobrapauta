@@ -1,4 +1,12 @@
 /* CobrePauta — interações da landing.
+ *
+ * LISTA DE ESPERA: cole aqui o endpoint do serviço que vai guardar os e-mails
+ * (ex.: Formspree → 'https://formspree.io/f/SEU_ID'). Enquanto estiver vazio,
+ * nenhum e-mail é salvo e o formulário avisa o visitante disso.
+ */
+const WAITLIST_ENDPOINT = '';
+
+/*
  * Todos os dados abaixo são EXEMPLOS (nomes e partidos fictícios).
  * Na versão real, virão das fontes oficiais listadas na seção "De onde vêm os dados". */
 
@@ -79,6 +87,7 @@ $('#pautaChips').addEventListener('click', (e) => {
   renderPautas();
   renderPessoas();
   renderAskOptions();
+  renderWaitlistPautas();
 });
 
 /* ---------- Passo 2: pessoas ---------- */
@@ -157,17 +166,95 @@ $('#ranking-list').addEventListener('click', (e) => {
   renderTimeline();
 });
 
-/* ---------- Login (demo) ---------- */
-$('#signup').addEventListener('submit', (e) => {
+/* ---------- Lista de espera ---------- */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+const TYPOS = {
+  'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmail.co': 'gmail.com',
+  'gmail.com.br': 'gmail.com', 'gnail.com': 'gmail.com', 'hotmal.com': 'hotmail.com', 'hotmail.co': 'hotmail.com',
+  'hotmai.com': 'hotmail.com', 'hotmial.com': 'hotmail.com', 'outlok.com': 'outlook.com', 'outloo.com': 'outlook.com',
+  'yahoo.com.b': 'yahoo.com.br', 'yaho.com.br': 'yahoo.com.br', 'yahoo.co': 'yahoo.com', 'icloud.co': 'icloud.com',
+  'uol.com': 'uol.com.br', 'bol.com': 'bol.com.br',
+};
+const wl = {
+  form: $('#waitlist'), field: $('#wlField'), input: $('#wlEmail'), btn: $('#wlSubmit'),
+  err: $('#wlError'), pautas: $('#wlPautas'), done: $('#wlDone'), touched: false,
+};
+
+function nomesSelecionados() {
+  return PAUTAS.filter((p) => state.selecionadas.has(p.id)).map((p) => p.nome);
+}
+function renderWaitlistPautas() {
+  const nomes = nomesSelecionados();
+  wl.pautas.innerHTML = nomes.length
+    ? `Você também será avisado sobre <b>${nomes.length} pauta${nomes.length > 1 ? 's' : ''}</b>: ${nomes.map(esc).join(', ')}. <a href="#pautas">Alterar</a>`
+    : 'Nenhuma pauta escolhida ainda. <a href="#pautas">Escolha suas pautas</a> para receber novidades sobre elas.';
+}
+
+function checkEmail(show) {
+  const v = wl.input.value.trim();
+  let msg = '';
+  if (!v) msg = 'Digite seu e-mail para entrar na lista.';
+  else if (!EMAIL_RE.test(v)) msg = 'Esse e-mail parece incompleto. Confira se tem @ e o domínio (ex.: nome@gmail.com).';
+  const ok = !msg;
+  wl.field.classList.toggle('is-valid', ok);
+  if (show) {
+    wl.field.classList.toggle('is-error', !ok);
+    wl.input.setAttribute('aria-invalid', String(!ok));
+    wl.err.textContent = msg;
+    if (ok) suggestTypo(v);
+  }
+  return ok;
+}
+function suggestTypo(v) {
+  const [user, dom] = v.toLowerCase().split('@');
+  const fix = TYPOS[dom];
+  if (!fix) return false;
+  const sug = `${user}@${fix}`;
+  wl.err.innerHTML = `Você quis dizer <button type="button" id="wlFix">${esc(sug)}</button>?`;
+  $('#wlFix').addEventListener('click', () => { wl.input.value = sug; wl.err.textContent = ''; wl.input.focus(); });
+  return true;
+}
+
+wl.input.addEventListener('blur', () => { if (wl.input.value.trim()) { wl.touched = true; checkEmail(true); } });
+wl.input.addEventListener('input', () => {
+  if (wl.touched) checkEmail(true); else checkEmail(false);
+});
+
+wl.form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const input = $('#email');
-  const msg = $('#formMsg');
-  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-  msg.className = 'form-msg ' + (ok ? 'ok' : 'err');
-  msg.textContent = ok
-    ? `Pronto! Avisaremos você quando o portal abrir. Pautas escolhidas: ${state.selecionadas.size}.`
-    : 'Digite um e-mail válido.';
-  if (ok) input.value = '';
+  wl.touched = true;
+  if (!checkEmail(true)) { wl.input.focus(); return; }
+  const email = wl.input.value.trim();
+  // Mostra a sugestão de correção uma vez; se a pessoa enviar de novo, segue com o que digitou.
+  if (wl.typoAsked !== email && suggestTypo(email)) { wl.typoAsked = email; return; }
+
+  if (!WAITLIST_ENDPOINT) {
+    wl.err.textContent = 'A lista de espera abre em breve. Ainda não estamos guardando e-mails, volte em alguns dias.';
+    return;
+  }
+
+  wl.btn.setAttribute('aria-busy', 'true');
+  try {
+    const res = await fetch(WAITLIST_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ email, pautas: nomesSelecionados().join('; '), origem: 'site-lista-de-espera' }),
+    });
+    if (!res.ok) throw new Error(res.status);
+    $('#wlDoneText').textContent = `Vamos avisar em ${email} quando o portal abrir.`;
+    wl.form.hidden = true;
+    wl.done.hidden = false;
+  } catch {
+    wl.err.textContent = 'Não conseguimos enviar agora. Verifique sua conexão e tente de novo.';
+  } finally {
+    wl.btn.removeAttribute('aria-busy');
+  }
+});
+
+$('#wlAgain').addEventListener('click', () => {
+  wl.form.reset(); wl.touched = false;
+  wl.field.classList.remove('is-error', 'is-valid'); wl.err.textContent = '';
+  wl.done.hidden = true; wl.form.hidden = false; wl.input.focus();
 });
 
 /* ---------- Mensagem pronta ---------- */
@@ -229,6 +316,7 @@ renderPessoas();
 renderRanking();
 renderTimeline();
 renderAskOptions();
+renderWaitlistPautas();
 
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
