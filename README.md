@@ -1,6 +1,6 @@
-# CobrePauta
+# CobraPauta
 
-Landing page do CobrePauta: acompanhe as pautas que você defende e cobre quem pode agir por elas.
+Landing page do CobraPauta: acompanhe as pautas que você defende e cobre quem pode agir por elas.
 
 Site estático (HTML + CSS + JS puro, sem build). Para ver localmente, abra o `index.html` ou rode:
 
