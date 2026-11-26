@@ -157,19 +157,6 @@ $('#ranking-list').addEventListener('click', (e) => {
   renderTimeline();
 });
 
-/* ---------- Login (demo) ---------- */
-$('#signup').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const input = $('#email');
-  const msg = $('#formMsg');
-  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-  msg.className = 'form-msg ' + (ok ? 'ok' : 'err');
-  msg.textContent = ok
-    ? `Pronto! Avisaremos você quando o portal abrir. Pautas escolhidas: ${state.selecionadas.size}.`
-    : 'Digite um e-mail válido.';
-  if (ok) input.value = '';
-});
-
 /* ---------- Mensagem pronta ---------- */
 function renderAskOptions() {
   const sel = $('#askPauta');
