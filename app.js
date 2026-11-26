@@ -1,4 +1,4 @@
-/* CobrePauta — interações da landing.
+/* CobraPauta — interações da landing.
  * Todos os dados abaixo são EXEMPLOS (nomes e partidos fictícios).
  * Na versão real, virão das fontes oficiais listadas na seção "De onde vêm os dados". */
 
@@ -169,7 +169,7 @@ function fillAsk() {
   $('#askText').value =
 `Prezado(a) parlamentar,
 
-Sou eleitor(a) e acompanho a pauta "${p.nome}" pelo CobrePauta.
+Sou eleitor(a) e acompanho a pauta "${p.nome}" pelo CobraPauta.
 
 Gostaria de saber quais iniciativas seu mandato pretende apresentar ou apoiar para avançar essa pauta, e qual o próximo passo previsto.
 
